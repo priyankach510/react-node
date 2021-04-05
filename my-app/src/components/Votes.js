@@ -1,27 +1,27 @@
 import React from 'react'
 
-export const Users = ({users}) => {
+export const Votes = ({votes}) => {
 
-    console.log('users length:::', users.length)
-    if (users.length === 0) return null
+    console.log('votes length:::', votes.length)
+    if (votes.length === 0) return null
 
-    const UserRow = (user,index) => {
+    const VoteRow = (vote,index) => {
 
         return(
               <tr key = {index} className={index%2 === 0?'odd':'even'}>
                   <td>{index + 1}</td>
-                  <td>{user.firstName}</td>
-                  <td>{user.lastName}</td>
-                  <td>{user.email}</td>
+                  <td>{vote.firstName}</td>
+                  <td>{vote.lastName}</td>
+                  <td>{vote.email}</td>
               </tr>
           )
     }
 
-    const userTable = users.map((user,index) => UserRow(user,index))
+    const voteTable = votes.map((vote,index) => VoteRow(vote,index))
 
     return(
         <div className="container">
-            <h2>Users</h2>
+            <h2>Votes</h2>
             <table className="table table-bordered">
                 <thead>
                 <tr>
@@ -32,7 +32,7 @@ export const Users = ({users}) => {
                 </tr>
                 </thead>
                 <tbody>
-                    {userTable}
+                    {voteTable}
                 </tbody>
             </table>
         </div>

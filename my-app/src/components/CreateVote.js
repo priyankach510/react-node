@@ -1,14 +1,14 @@
 import React from 'react'
 
 
-const CreateUser = ({onChangeForm, createUser }) => {
+const CreateVote = ({onChangeForm, createVote }) => {
 
 
     return(
         <div className="container">
             <div className="row">
                 <div className="col-md-7 mrgnbtm">
-                <h2>Create User</h2>
+                <h2>Create Vote</h2>
                 <form>
                     <div className="row">
                         <div className="form-group col-md-6">
@@ -26,7 +26,7 @@ const CreateUser = ({onChangeForm, createUser }) => {
                             <input type="text" onChange={(e) => onChangeForm(e)} className="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email" />
                         </div>
                     </div>
-                    <button type="button" onClick= {(e) => createUser()} className="btn btn-danger">Create</button>
+                    <button type="button" onClick= {(e) => createVote()} className="btn btn-danger">Create</button>
                 </form>
                 </div>
             </div>
@@ -34,4 +34,4 @@ const CreateUser = ({onChangeForm, createUser }) => {
     )
 }
 
-export default CreateUser
+export default CreateVote

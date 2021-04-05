@@ -5,21 +5,21 @@ const app = express(),
       port = 3080;
 
 // place holder for the data
-const users = [];
+const votes = [];
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../my-app/build')));
 
-app.get('/api/users', (req, res) => {
-  console.log('api/users called!')
-  res.json(users);
+app.get('/api/votes', (req, res) => {
+  console.log('api/votes called!')
+  res.json(votes);
 });
 
-app.post('/api/user', (req, res) => {
-  const user = req.body.user;
-  console.log('Adding user:::::', user);
-  users.push(user);
-  res.json("user addedd");
+app.post('/api/vote', (req, res) => {
+  const vote = req.body.vote;
+  console.log('Adding vote:::::', vote);
+  votes.push(vote);
+  res.json("vote recorded");
 });
 
 app.get('/', (req,res) => {

@@ -2,45 +2,45 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Header } from './components/Header'
-import { Users } from './components/Users'
+import { Votes } from './components/Votes'
 import { DisplayBoard } from './components/DisplayBoard'
-import CreateUser from './components/CreateUser'
-import { getAllUsers, createUser } from './services/UserService'
+import CreateVote from './components/CreateVote'
+import { getAllVotes, createVote } from './services/VoteService'
 
 class App extends Component {
 
   state = {
-    user: {},
-    users: [],
-    numberOfUsers: 0
+    vote: {},
+    votes: [],
+    numberOfVotes: 0
   }
 
-  createUser = (e) => {
-      createUser(this.state.user)
+  createVote = (e) => {
+      createVote(this.state.vote)
         .then(response => {
           console.log(response);
-          this.setState({numberOfUsers: this.state.numberOfUsers + 1})
+          this.setState({numberOfVotes: this.state.numberOfvotes + 1})
       });
   }
 
-  getAllUsers = () => {
-    getAllUsers()
-      .then(users => {
-        console.log(users)
-        this.setState({users: users, numberOfUsers: users.length})
+  getAllVotes = () => {
+    getAllVotes()
+      .then(votes => {
+        console.log(votes)
+        this.setState({votes: votes, numberOfVotes: votes.length})
       });
   }
 
   onChangeForm = (e) => {
-      let user = this.state.user
+      let vote = this.state.vote
       if (e.target.name === 'firstname') {
-          user.firstName = e.target.value;
+          vote.firstName = e.target.value;
       } else if (e.target.name === 'lastname') {
-          user.lastName = e.target.value;
+          vote.lastName = e.target.value;
       } else if (e.target.name === 'email') {
-          user.email = e.target.value;
+          vote.email = e.target.value;
       }
-      this.setState({user})
+      this.setState({vote})
   }
 
   render() {
@@ -51,24 +51,24 @@ class App extends Component {
         <div className="container mrgnbtm">
           <div className="row">
             <div className="col-md-8">
-                <CreateUser 
-                  user={this.state.user}
+                <CreateVote 
+                  vote={this.state.vote}
                   onChangeForm={this.onChangeForm}
-                  createUser={this.createUser}
+                  createVote={this.createVote}
                   >
-                </CreateUser>
+                </CreateVote>
             </div>
             <div className="col-md-4">
                 <DisplayBoard
-                  numberOfUsers={this.state.numberOfUsers}
-                  getAllUsers={this.getAllUsers}
+                  numberOfVotes={this.state.numberOfVotes}
+                  getAllVotes={this.getAllVotes}
                 >
                 </DisplayBoard>
             </div>
           </div>
         </div>
         <div className="row mrgnbtm">
-          <Users users={this.state.users}></Users>
+          <Votes votes={this.state.votes}></Votes>
         </div>
       </div>
     );

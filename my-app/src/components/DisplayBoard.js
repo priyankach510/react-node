@@ -1,15 +1,15 @@
 import React from 'react'
 
-export const DisplayBoard = ({numberOfUsers, getAllUsers}) => {
+export const DisplayBoard = ({numberOfVotes, getAllVotes}) => {
     
     return(
         <div className="display-board">
-            <h4>Users Created</h4>
+            <h4>Votes Recorded</h4>
             <div className="number">
-            {numberOfUsers}
+            {numberOfVotes}
             </div>
             <div className="btn">
-                <button type="button" onClick={(e) => getAllUsers()} className="btn btn-warning">Get all Users</button>
+                <button type="button" onClick={(e) => getAllVotes()} className="btn btn-warning">Get all Votes</button>
             </div>
         </div>
     )
