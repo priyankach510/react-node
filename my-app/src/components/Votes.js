@@ -25,7 +25,7 @@ export const Votes = ({votes}) => {
             <table className="table table-bordered">
                 <thead>
                 <tr>
-                    <th>User Id</th>
+                    <th>Voter Id</th>
                     <th>Firstname</th>
                     <th>Lastname</th>
                     <th>Email</th>
