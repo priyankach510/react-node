@@ -15,6 +15,12 @@ app.get('/api/votes', (req, res) => {
   res.json(votes);
 });
 
+app.get('/api/resetvotes', (req, res) => {
+  console.log('api/resetvotes called!')
+  votes.slice(0,votes.length-1);
+  res.json(votes);
+});
+
 app.post('/api/vote', (req, res) => {
   const vote = req.body.vote;
   console.log('Adding vote:::::', vote);

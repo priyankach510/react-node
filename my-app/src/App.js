@@ -5,7 +5,7 @@ import { Header } from './components/Header'
 import { Votes } from './components/Votes'
 import { DisplayBoard } from './components/DisplayBoard'
 import CreateVote from './components/CreateVote'
-import { getAllVotes, createVote } from './services/VoteService'
+import { getAllVotes, createVote, resetAllVotes } from './services/VoteService'
 
 class App extends Component {
 
@@ -19,12 +19,20 @@ class App extends Component {
       createVote(this.state.vote)
         .then(response => {
           console.log(response);
-          this.setState({numberOfVotes: this.state.numberOfvotes + 1})
+          this.setState({numberOfVotes: this.state.numberOfVotes + 1})
       });
   }
 
   getAllVotes = () => {
     getAllVotes()
+      .then(votes => {
+        console.log(votes)
+        this.setState({votes: votes, numberOfVotes: votes.length})
+      });
+  }
+
+  resetAllVotes = () => {
+    resetAllVotes()
       .then(votes => {
         console.log(votes)
         this.setState({votes: votes, numberOfVotes: votes.length})
@@ -62,6 +70,7 @@ class App extends Component {
                 <DisplayBoard
                   numberOfVotes={this.state.numberOfVotes}
                   getAllVotes={this.getAllVotes}
+                  resetAllVotes={this.resetAllVotes}
                 >
                 </DisplayBoard>
             </div>
